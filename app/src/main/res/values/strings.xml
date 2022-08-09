@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">NumbersAPI_android_client</string>
+    <string name="app_name">NumbersAPI</string>
     <string name="enter_number">Введите число</string>
     <string name="number_hint">Число (ex. 42)</string>
     <string name="show_fact">Показать факт</string>
+    <string name="NumbersAPI_URL">http://numbersapi.com</string>
 </resources>

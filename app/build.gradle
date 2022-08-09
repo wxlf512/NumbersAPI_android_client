@@ -57,10 +57,11 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:$okHttp_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$okHttp_version"
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-scalars:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava3:$retrofit_version"
 
     // RxJava
     def rxJava_version = '3.1.5'
     implementation "io.reactivex.rxjava3:rxjava:$rxJava_version"
+    implementation "io.reactivex.rxjava3:rxandroid:3.0.0"
 }

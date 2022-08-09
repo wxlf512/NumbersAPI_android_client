@@ -1,4 +1,4 @@
-package dev.wxlf.numbersapi_android_client
+package dev.wxlf.numbersapi_android_client.views
 
 import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndSingleStrategy
@@ -10,4 +10,7 @@ interface MainView : MvpView {
 
     @StateStrategyType(value = AddToEndSingleStrategy::class)
     fun writeFact(fact: String)
+
+    @StateStrategyType(value = AddToEndSingleStrategy::class)
+    fun showError(error: String)
 }
