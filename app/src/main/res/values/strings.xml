@@ -4,4 +4,12 @@
     <string name="number_hint">Число (ex. 42)</string>
     <string name="show_fact">Показать факт</string>
     <string name="NumbersAPI_URL">http://numbersapi.com</string>
+
+    // MARK: choosing type of fact
+    <string-array name="types_of_fact">
+        <item>Интересный факт</item>
+        <item>Математический факт</item>
+        <item>Факт про год</item>
+        <item>Факт про дату</item>
+    </string-array>
 </resources>

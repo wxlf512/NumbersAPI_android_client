@@ -1,10 +1,9 @@
 package dev.wxlf.numbersapi_android_client.screens
 
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.text.InputType
+import android.view.View
+import android.widget.*
 import dev.wxlf.numbersapi_android_client.NumbersApp
 import dev.wxlf.numbersapi_android_client.presenters.MainPresenter
 import dev.wxlf.numbersapi_android_client.views.MainView
@@ -12,17 +11,25 @@ import dev.wxlf.numbersapi_android_client.R
 import moxy.MvpAppCompatActivity
 import moxy.presenter.InjectPresenter
 
-class MainActivity : MvpAppCompatActivity(), MainView {
+class MainActivity : MvpAppCompatActivity(), MainView, AdapterView.OnItemSelectedListener {
 
     @InjectPresenter
     lateinit var mainPresenter: MainPresenter
+
+    private lateinit var userNumInput: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        userNumInput = findViewById<EditText>(R.id.userNum)
+        val spinner = findViewById<Spinner>(R.id.spinner)
+
+        spinner.onItemSelectedListener = this
+
         findViewById<Button>(R.id.showFactBtn).setOnClickListener {
-            mainPresenter.fetchFact(findViewById<EditText>(R.id.userNum).text.toString().toIntOrNull(),
+            mainPresenter.fetchFact(userNumInput.text.toString(),
+                spinner.selectedItemPosition,
                 (this.application as? NumbersApp)!!.numbersApi)
         }
     }
@@ -32,6 +39,17 @@ class MainActivity : MvpAppCompatActivity(), MainView {
     }
 
     override fun showError(error: String) {
-        Toast.makeText(applicationContext, error, Toast.LENGTH_LONG).show()
+        Toast.makeText(this, error, Toast.LENGTH_LONG).show()
+    }
+
+    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+        if (p0?.selectedItemPosition == 3) {
+            userNumInput.inputType = InputType.TYPE_CLASS_DATETIME
+        } else {
+            userNumInput.inputType = InputType.TYPE_CLASS_NUMBER
+        }
+    }
+
+    override fun onNothingSelected(p0: AdapterView<*>?) {
     }
 }

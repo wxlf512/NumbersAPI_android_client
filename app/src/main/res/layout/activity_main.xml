@@ -27,6 +27,14 @@
         android:textColorHint="#757575"
         tools:ignore="LabelFor" />
 
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:entries="@array/types_of_fact"
+        android:minHeight="48dp" />
+
     <Button
         android:id="@+id/showFactBtn"
         android:text="@string/show_fact"

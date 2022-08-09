@@ -6,9 +6,9 @@ import retrofit2.http.Path
 
 interface NumbersApi {
 
-    @GET("./random/trivia")
-    fun getRandomTriviaFact(): Single<String>
+    @GET("/{number}/{type}")
+    fun getFact(@Path("number") number: String, @Path("type") type: String): Single<String>
 
-    @GET("/{number}/trivia")
-    fun getTriviaFact(@Path("number") number: Int): Single<String>
+    @GET("/{month}/{number}/date")
+    fun getDateFact(@Path("month") month: Int, @Path("number") number: Int,): Single<String>
 }
