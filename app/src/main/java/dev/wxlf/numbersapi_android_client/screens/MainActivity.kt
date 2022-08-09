@@ -24,13 +24,27 @@ class MainActivity : MvpAppCompatActivity(), MainView, AdapterView.OnItemSelecte
 
         userNumInput = findViewById<EditText>(R.id.userNum)
         val spinner = findViewById<Spinner>(R.id.spinner)
-
         spinner.onItemSelectedListener = this
 
+        val randomCheckBox = findViewById<CheckBox>(R.id.randomCheckBox)
+        randomCheckBox.setOnClickListener {
+            userNumInput.isEnabled = !randomCheckBox.isChecked
+        }
+
         findViewById<Button>(R.id.showFactBtn).setOnClickListener {
-            mainPresenter.fetchFact(userNumInput.text.toString(),
-                spinner.selectedItemPosition,
-                (this.application as? NumbersApp)!!.numbersApi)
+            if (randomCheckBox.isChecked) {
+                mainPresenter.fetchFact(
+                    "random",
+                    spinner.selectedItemPosition,
+                    (this.application as? NumbersApp)!!.numbersApi
+                )
+            } else {
+                mainPresenter.fetchFact(
+                    userNumInput.text.toString(),
+                    spinner.selectedItemPosition,
+                    (this.application as? NumbersApp)!!.numbersApi
+                )
+            }
         }
     }
 
@@ -45,8 +59,10 @@ class MainActivity : MvpAppCompatActivity(), MainView, AdapterView.OnItemSelecte
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
         if (p0?.selectedItemPosition == 3) {
             userNumInput.inputType = InputType.TYPE_CLASS_DATETIME
+            userNumInput.hint = getString(R.string.date_hint)
         } else {
             userNumInput.inputType = InputType.TYPE_CLASS_NUMBER
+            userNumInput.hint = getString(R.string.number_hint)
         }
     }
 

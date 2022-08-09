@@ -27,6 +27,13 @@
         android:textColorHint="#757575"
         tools:ignore="LabelFor" />
 
+    <CheckBox
+        android:id="@+id/randomCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/random_checkbox" />
+
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="wrap_content"

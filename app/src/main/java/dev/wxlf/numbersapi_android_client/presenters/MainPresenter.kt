@@ -25,7 +25,7 @@ class MainPresenter: MvpPresenter<MainView>() {
     }
 
     fun fetchFact(num: String, type: Int, numbersApi: NumbersApi) {
-        if (type == 3) {
+        if (type == 3 && num != "random") {
             val formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd")
             val date = LocalDate.parse("2022/$num", formatter).atStartOfDay()
             compositeDisposable.add(numbersApi.getDateFact(date.month.value, date.dayOfMonth)

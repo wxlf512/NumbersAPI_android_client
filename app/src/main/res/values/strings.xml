@@ -4,6 +4,8 @@
     <string name="number_hint">Число (ex. 42)</string>
     <string name="show_fact">Показать факт</string>
     <string name="NumbersAPI_URL">http://numbersapi.com</string>
+    <string name="random_checkbox">Случайное число</string>
+    <string name="date_hint">Дата в формате MM/dd (ex. 04/22)</string>
 
     // MARK: choosing type of fact
     <string-array name="types_of_fact">
